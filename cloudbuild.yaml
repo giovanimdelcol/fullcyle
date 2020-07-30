@@ -11,3 +11,19 @@ steps:
 - id : 'Rodando Composer'
   name: "gcr.io/cloud-builders/docker"
   args: ['exec', '-t', 'app', 'composer', 'install', '-d','/var/www/laravel']
+
+- id: 'Copiand .env'
+  name: "gcr.io/cloud-builders/docker"
+  args: ['exec', '-t', 'app', 'cp', '/var/www/laravel/.env.example', '/var/www/laravel/.env']
+
+- id: 'Rodando key:generate'
+  name: "gcr.io/cloud-builders/docker"
+  args: ['exec', '-t', 'app', 'php', '/var/www/laravel/artisan', 'key:generate']
+
+- id: 'Rodando migrations'
+  name: "gcr.io/cloud-builders/docker"
+  args: ['exec', '-t', 'app', 'php', '/var/www/laravel/artisan', 'migrate']
+
+- id: 'Rodando phpunit'
+  name: "gcr.io/cloud-builders/docker"
+  args: ['exec', '-t', 'app', 'php', '/var/www/laravel/vendor/bin/phpunit', '-c', '/var/www/laravel/phpunit.xml']
