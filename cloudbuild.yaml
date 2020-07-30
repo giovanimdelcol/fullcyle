@@ -10,4 +10,4 @@ steps:
   
 - id : 'Rodando Composer'
   name: "gcr.io/cloud-builders/docker"
-  args: ['exec', '-t', 'app', 'composer', 'install', '-d=/laravel']
+  args: ['exec', '-t', 'app', 'composer', 'install', '-d','/laravel']
