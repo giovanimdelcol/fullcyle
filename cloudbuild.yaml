@@ -7,11 +7,7 @@ steps:
 - id: "Rodando Docker PS"
   name: "gcr.io/cloud-builders/docker"
   args: ['ps']
-
-  - id : 'Rodando Composer'
-  name: "gcr.io/cloud-builders/docker"
-  args: ['exec', '-it', 'app', 'cd', 'laravel']
-
+  
 - id : 'Rodando Composer'
   name: "gcr.io/cloud-builders/docker"
   args: ['exec', '-t', 'app', 'composer', 'install', '-d=/laravel']
