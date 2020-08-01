@@ -24,6 +24,6 @@ steps:
   name: "gcr.io/cloud-builders/docker"
   args: ['exec', '-t', 'app', 'php', '/var/www/laravel/artisan', 'migrate']
 
-- id: 'Rodando phpunit'
+- id: 'Rodando Php-unit'
   name: "gcr.io/cloud-builders/docker"
   args: ['exec', '-t', 'app', 'php', '/var/www/laravel/vendor/bin/phpunit', '-c', '/var/www/laravel/phpunit.xml']
